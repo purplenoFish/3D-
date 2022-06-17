@@ -1,0 +1,69 @@
+*{
+    /* 初始化 */
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+    /* 自定义属性  利用js随机生成属性 通过var函数调用*/
+    /* 上外边距 */
+    --margin-top: 0;
+    /* 左外边距 */
+    --margin-left: 0;
+    /* 动画时长 */
+    --animation-duration: 0s;
+    /* 动画延迟时间 */
+    --animation-delay: 0s;
+}
+
+body{
+    /* 100%室口高度 */
+    height: 100vh;
+    /* 弹性布局居中显示 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #111;
+    /* 移除隐藏 */
+    overflow: hidden;
+    /* 设置视距 */
+    perspective: 1300px;
+}
+
+div{
+    /* 所有div默认开启3d属性 */
+    transform-style: preserve-3d;
+}
+
+.word-box,
+.word-box .word{
+
+    position: absolute;
+    /* 执行动画 动画名 时长 线性的 无限次播放 */
+    animation: rotY 0s linear infinite;
+    /* 设置动画时长 */
+    animation-duration: var(--animation-duration);
+    /* 这只动画延迟 */
+    animation-delay: var(--animation-delay);
+}
+
+.word-box{
+    margin-top: var(--margin-top);
+}
+
+.word-box .word{
+    margin-left: var(--margin-left);
+}
+/* 反向动画 */
+.word-box .word{
+    animation-duration: reverse;
+}
+
+/* 定义动画 */
+
+@keyframes rotY{
+    to{
+        /* 沿着y轴转一圈 */
+        transform: rotateY(1turn);
+    }
+}
